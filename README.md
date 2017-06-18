@@ -60,7 +60,7 @@ finishLogin();
 ```
 
 ## What's with the name?
-"Zuzen" stands for "correct" in the Basque language with the intention of making it unique while helping developers help their end users provided information in the correct and proper format.
+"Zuzen" stands for "correct" in the Basque language with the intention of making it unique while helping developers help their end users provide information in the correct and proper format.
 
 ## License
 Apache License 2.0 already included in the repo itself.
