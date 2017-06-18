@@ -1,4 +1,4 @@
-# zuzen
+# Zuzen
 Lightweight form validation library for Android.
 
 <a href="http://www.methodscount.com/?lib=com.github.arjleon%3Azuzen%3A-SNAPSHOT"><img src="https://img.shields.io/badge/Methods count-35-e91e63.svg"/></a>
@@ -66,7 +66,7 @@ mPresenter.finishRegistration();
 ```
 
 ## What's with the name?
-"Zuzen" stands for "correct" in the Basque language with the intention of making it unique while helping developers help their end users provide information in the correct and proper format.
+"Zuzen" means "correct" in the Basque language with the intention of making it unique while helping developers help their end users provide information in the correct and proper format.
 
 ## License
 Apache License 2.0 already included in the repo itself.
