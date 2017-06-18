@@ -1,7 +1,11 @@
 # zuzen
 Lightweight form validation library for Android.
 
-The idea behind this library is to make form validation a bit more streamline on simple Android projects by linking specific types of Views and their "Validators" that will accept such type of View to obtain the proper data to parse, compare against, etc.
+<a href="http://www.methodscount.com/?lib=com.github.arjleon%3Azuzen%3A-SNAPSHOT"><img src="https://img.shields.io/badge/Methods count-35-e91e63.svg"/></a>
+<a href="http://www.methodscount.com/?lib=com.github.arjleon%3Azuzen%3A-SNAPSHOT"><img src="https://img.shields.io/badge/Size-6 KB-e91e63.svg"/></a>
+
+
+The idea behind this library is to make form validation a bit easier with standardized classes that will deal with the actual validation to keep the view class (`Activity`, `Fragment`, `View`, etc.) as clean as possible on simple Android projects. It's set by linking specific classes of Views and their "Validators" that will know how to handle and validate the proper data before reporting back the result.
 
 ## Usage
 
@@ -9,14 +13,14 @@ The idea behind this library is to make form validation a bit more streamline on
 Add jitpack's repo under `allrepositories` in your project's `build.gradle` file.
 ```
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
 }
 ```
 
-Then add the library as a dependency. In the future once it gets on a higher version, it should have a release and a specific version could be defined. For now, stick to the exact same line as this snippet:
+Then add the library as a dependency under your module's build.gradle file. In the future once it gets on a higher, more stable version, it should have a release and a specific version could be defined. For now, stick to the exact same line as this snippet:
 ```
 compile 'com.github.arjleon:zuzen:-SNAPSHOT'
 ```
@@ -32,30 +36,32 @@ Check example below.
 
 ```java
 // The library contains a BasicEmailValidator class implementing Validator<EditText>
-BasicEmailValidator emailAddressValidator = new BasicEmailValidator();
+final BasicEmailValidator emailAddressValidator = new BasicEmailValidator();
 final Validation<EditText> emailVal = new Validation<>(mEmailEditText, emailAddressValidator);
+// CustomView and CustomValidator are not real classes in the library
+// They are part of the snippet to demonstrate the fact that custom implementations can be defined
 final Validation<CustomView> customVal = new Validation<>(mCustomView, new CustomValidator());
 
 ...
 
 // In custom TextWatcher implementations, we can run each individual validator to give real-time feedback if needed
-ValidationResult realTimeResult = emailVal.validate();
+ValidationResult realTimeCheck = emailVal.validate();
 
 ...
 
 // And when a "Done" button is pressed, we can run all validations in order by chaining them all
 //and show proper UI feedback until the ValidationResult is returning "true" for "isValid()"
 
-ValidationSet set = emailVal.chain(customVal); //more can be chained
-ValidationResult finalCheckResult = set.validate(); //run validate on the final set with all chained validations
+final ValidationSet set = emailVal.chain(customVal); //more can be chained
+...
+ValidationResult finalCheck = set.validate(); //run validate on the final set with all chained validations
 
-if (!finalCheckResult.isValid()) {
-  final String message = getErrorByValidator(finalCheckResult.getValidator());
-  showWrongInputInView(finalCheckResult.getFormView(), message);
+if (!finalCheck.isValid()) {
+  showWrongInputInView(finalCheck.getFormView());
   return;
 }
 
-finishLogin();
+mPresenter.finishRegistration();
 ...
 ```
 
