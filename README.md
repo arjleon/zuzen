@@ -5,6 +5,23 @@ The idea behind this library is to make form validation a bit more streamline on
 
 ## Usage
 
+### Dependency (via Jitpack.io)
+Add jitpack's repo under `allrepositories` in your project's `build.gradle` file.
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+}
+```
+
+Then add the library as a dependency. In the future once it gets on a higher version, it should have a release and a specific version could be defined. For now, stick to the exact same line as this snippet:
+```
+compile 'com.github.arjleon:zuzen:-SNAPSHOT'
+```
+
+### Implementation
 Important list of the few classes in the library:
 * `Validation`: Contains references of the View along with the `Validator` object that will perform the actual validation.
 * `Validator`: Contains the actual algorithm processing the data from whatever `View` it's made to handle (e.g. `TextView`, `EditText`, or even a custom one if implemented.)
